@@ -1,0 +1,17 @@
+body{
+    padding: 0;
+    margin: 0;
+    background: burlywood;
+}
+
+div{
+    height: 100px;
+    color:chocolate;
+    font-size: 90px;
+}
+
+span{
+    background: black;
+    color:red;
+    display: block;
+}
