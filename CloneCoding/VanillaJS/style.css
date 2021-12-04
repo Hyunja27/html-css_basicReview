@@ -1,0 +1,19 @@
+
+body {
+    background-color: chocolate;
+}
+
+p {
+    font-size: 90px;
+    font-weight: bold;
+    margin: 40px;
+}
+
+.change{
+    font-size: 60px;
+    color: darkblue;
+}
+
+.hidden{
+    display: None;
+}
