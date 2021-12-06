@@ -4,10 +4,14 @@ const images=[
     "c.JPG"
     ];
 
-const index = Math.round((Math.random() * images.length))
+const jndex = Math.floor((Math.random() * images.length))
 
-const quote = document.querySelector("#quote")
-const author = document.querySelector("#author")
+const rand_img = images[jndex]
+// const rand_img = document.querySelector("#")
 
-quote.innerHTML = quotes[index].quote
-author.innerHTML = quotes[index].author
+const back_img = document.createElement("img")
+
+back_img.src = `img/${rand_img}`
+
+document.body.appendChild(back_img);
+

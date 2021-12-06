@@ -31,7 +31,7 @@ const quotes=[
     }
     ];
 
-const index = Math.round((Math.random() * quotes.length))
+const index = Math.floor((Math.random() * quotes.length))
 
 const quote = document.querySelector("#quote")
 const author = document.querySelector("#author")
