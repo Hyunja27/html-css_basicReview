@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<body>
+    <button id="btn">Click Count is : </button>
+    <span id="count"></span>
+</body>
+<script>
+    let counter = 0;
+    const btn = document.querySelector("#btn")
+    const countShow = document.querySelector("#count")
+
+    function clickcount(event)
+    {
+        counter++;
+        countShow.innerHTML = counter;
+    }
+
+    btn.addEventListener("click", clickcount)
+</script>
+</html>
