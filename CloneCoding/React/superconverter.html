@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+<script type="text/babel">
+
+    const root = document.querySelector("#root")
+    function Container()
+    { 
+        const [minute, setMinute] = React.useState(0);
+        const [flipper, setFlipper] = React.useState(false);
+        function changing(event){
+            setMinute(event.target.value)
+        }
+        function reset() {
+            setMinute(0)
+        }
+        function flip() {
+            setFlipper((current) => !current)
+        }
+        return (<div>
+         <h2>super Converter!</h2>
+            <label for="minute">Minute!</label>
+            <input value={minute} onChange={changing} id="minute" placeholder="Minutes" type="number" disabled={flipper === true}></input>
+            <label for="hour">Hour!</label>
+            <input value={minute / 60} id="hour" placeholder="Hours" type="number" disabled={flipper === false}></input>
+            <h4>{minute}</h4>
+            <button onClick={reset}>Reset</button>
+            <button onClick={flip}>Flip</button>
+        </div>
+         )
+    }
+    ReactDOM.render(<Container/>, root)
+</script>
+</html>
+
+
+
+
+<!-- 
+ 
+const Span = () => (
+    <h2 id="skim" onMouseenter={() => console.log("mouses enter")}>
+        hehe
+    </h2>
+);
+
+// const span = React.createElement("h2", {
+//     onMouseEnter: () => console.log("mouses enter"),
+//     id: "skim"
+// }, "hehe")
+
+const BtN = () => <button id= "btn" onClick={() => alert("!?")}>Click and count!</button>
+
+// const btn = React.createElement("button", {
+//     onClick: () => alert("!?"),
+//     style: {
+//         backgroundColor:"tomato"
+//     }
+// }, "click and count!")
+
+// const container = React.createElement("div", null, [span, btn]) -->
