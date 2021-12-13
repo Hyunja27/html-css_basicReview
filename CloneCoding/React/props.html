@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js" crossorigin></script>
+<script type="text/babel">
+
+const root = document.querySelector("#root")
+function Btn({text, changeval, fontSize = 16})
+{
+    console.log(text + " was rendrd")
+    return (
+        <button style={{
+            backgroundColor:"green",
+            border : 0,
+            color : "black",
+            borderRadius : 5,
+            padding : "20px 50px"
+        }} onClick={changeval}>
+        {text}</button>
+    )
+}
+
+const MemorizeBtn = React.memo(Btn)
+
+Btn.propTypes = {
+    text : PropTypes.string.isRequired,
+    fontSize : PropTypes.string,
+};
+
+function App()
+{
+    const [val, setVal] = React.useState("Hello")
+    function changer()
+    {
+        setVal("Go to Dinning.")
+    }
+    return (<div>
+        <MemorizeBtn text={val} changeval={changer}/>
+        <MemorizeBtn text={44} fontSize={30} />
+    </div>)
+}
+ReactDOM.render(<App/>, root)
+</script>
+</html>
+
+
+
+
+<!-- 
+ 
+const Span = () => (
+    <h2 id="skim" onMouseenter={() => console.log("mouses enter")}>
+        hehe
+    </h2>
+);
+
+// const span = React.createElement("h2", {
+//     onMouseEnter: () => console.log("mouses enter"),
+//     id: "skim"
+// }, "hehe")
+
+const BtN = () => <button id= "btn" onClick={() => alert("!?")}>Click and count!</button>
+
+// const btn = React.createElement("button", {
+//     onClick: () => alert("!?"),
+//     style: {
+//         backgroundColor:"tomato"
+//     }
+// }, "click and count!")
+
+// const container = React.createElement("div", null, [span, btn]) -->

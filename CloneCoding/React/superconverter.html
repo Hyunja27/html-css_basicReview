@@ -14,32 +14,73 @@
 <script type="text/babel">
 
     const root = document.querySelector("#root")
-    function Container()
+    function TimeConverter()
     { 
-        const [minute, setMinute] = React.useState(0);
+        const [amount, setAmount] = React.useState(0);
         const [flipper, setFlipper] = React.useState(false);
         function changing(event){
-            setMinute(event.target.value)
+            setAmount(event.target.value)
         }
         function reset() {
-            setMinute(0)
+            setAmount(0)
         }
         function flip() {
             setFlipper((current) => !current)
         }
         return (<div>
-         <h2>super Converter!</h2>
             <label for="minute">Minute!</label>
-            <input value={minute} onChange={changing} id="minute" placeholder="Minutes" type="number" disabled={flipper === true}></input>
+            <input value={flipper ? amount * 60 : amount} onChange={changing} id="minute" placeholder="Minutes" type="number" disabled={flipper === true}></input>
             <label for="hour">Hour!</label>
-            <input value={minute / 60} id="hour" placeholder="Hours" type="number" disabled={flipper === false}></input>
-            <h4>{minute}</h4>
+            <input value={flipper ? amount : amount / 60} onChange={changing} id="hour" placeholder="Hours" type="number" disabled={flipper === false}></input>
             <button onClick={reset}>Reset</button>
             <button onClick={flip}>Flip</button>
         </div>
          )
     }
-    ReactDOM.render(<Container/>, root)
+
+    function WeightConverter()
+    { 
+        const [amount, setAmount] = React.useState(0);
+        const [flipper, setFlipper] = React.useState(false);
+        function changing(event){
+            setAmount(event.target.value)
+        }
+        function reset() {
+            setAmount(0)
+        }
+        function flip() {
+            setFlipper((current) => !current)
+        }
+        return (<div>
+            <label for="kg">Kg!</label>
+            <input value={flipper ? amount / 2.205 : amount} onChange={changing} id="kg" placeholder="Kg" type="number" disabled={flipper === true}></input>
+            <label for="pound">Pounds!</label>
+            <input value={flipper ? amount : amount * 2.205} onChange={changing} id="pound" placeholder="Pounds" type="number" disabled={flipper === false}></input>
+            <button onClick={reset}>Reset</button>
+            <button onClick={flip}>Flip</button>
+        </div>
+         )
+    }
+
+
+    function ConverterSeclector()
+    {
+        const [index, setIndex] = React.useState("0")
+        function indexing(current){
+            setIndex(current.target.value)
+            console.log(current.target.value)
+        }
+        return (<div>
+         <h2>super Converter!</h2>
+         <select onChange={indexing}>
+            <option value="0"> Hour & Minutes </option>
+            <option value="1"> Kg & Pounds </option>
+        </select>
+        <hr/>
+            {index === "1" ? <WeightConverter/> : <TimeConverter/>}
+        </div>)
+    }
+    ReactDOM.render(<ConverterSeclector/>, root)
 </script>
 </html>
 
